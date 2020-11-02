@@ -81,7 +81,7 @@
                 </Grid>
                 <Border Grid.Column="1" BorderThickness="1,0,1,0" BorderBrush="Black">
                     <Grid>
-                        <Button Click="Button_Click" />
+                        
                     </Grid>
                 </Border>
                 
