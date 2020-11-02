@@ -41,3 +41,5 @@ C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\ka
 C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.csproj.CopyComplete
 C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.exe
 C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.pdb
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\Interop.WinHttp.dll
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.csproj.ResolveComReference.cache

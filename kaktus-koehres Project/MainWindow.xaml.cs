@@ -2,6 +2,10 @@
 using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Forms;
+using kaktus_koehres_Project.VIewModels;
+using WinHttp;
+using System.Text;
+using Microsoft.VisualBasic;
 
 namespace kaktus_koehres_Project
 {
@@ -10,20 +14,39 @@ namespace kaktus_koehres_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        private WinHttpRequest winhttp = new WinHttpRequest();
         private NotifyIcon notify;
         private WindowState PrevWindowState = WindowState.Normal;
         public MainWindow()
         {
             InitializeComponent();
+            CactusListBox.ItemsSource = ListBoxViewViewModel.GetInstance();
+
+            
+
+            //CactusListBox.Items.Refresh();
         }
 
         #region Windows Form Events
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-
             var anim = new DoubleAnimation(0, 1, (Duration)TimeSpan.FromSeconds(1));
             this.BeginAnimation(UIElement.OpacityProperty, anim);
+
+            winhttp.Open("GET", "https://www.kaktus-koehres.de/shop/Cactus-seeds---1.html");
+            winhttp.SetRequestHeader("accept-language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7");
+            winhttp.SetRequestHeader("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+            winhttp.Send();
+            winhttp.WaitForResponse();
+
+            string result = Strings.Split(Encoding.Default.GetString(winhttp.ResponseBody), "<u>Cactus seeds</u>")[1];
+            string[] list = Strings.Split(result, "</a></div><div class=");
+            for(int i = 0; i < list.Length - 1; i++) { 
+
+                string cacuts_name = Strings.Split(Strings.Split(list[i], "</a></div><div class=\"")[0], "\">")[3];
+                ListBoxViewViewModel.GetInstance().Add(cacuts_name);
+            }
+            CactusListBox.Items.Refresh();
         }
 
         private void Window_Activated(object sender, EventArgs e)
@@ -131,9 +154,13 @@ namespace kaktus_koehres_Project
 
 
 
+
+
         #endregion
 
-
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
