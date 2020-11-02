@@ -1,0 +1,43 @@
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\MainWindow.g.cs
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\App.g.cs
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project_MarkupCompile.cache
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project_MarkupCompile.lref
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\kaktus-koehres Project.exe.config
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\kaktus-koehres Project.exe
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\kaktus-koehres Project.pdb
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\MaterialDesignColors.dll
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\MaterialDesignColors.pdb
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\App.baml
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\MainWindow.baml
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.g.resources
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus_koehres_Project.Properties.Resources.resources
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.csproj.GenerateResource.cache
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.csproj.CopyComplete
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.exe
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.pdb
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\kaktus-koehres Project.exe.config
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\kaktus-koehres Project.exe
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\kaktus-koehres Project.pdb
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\MaterialDesignColors.dll
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\MaterialDesignColors.pdb
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.csprojAssemblyReference.cache
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\MainWindow.g.cs
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\App.g.cs
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project_MarkupCompile.cache
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project_MarkupCompile.lref
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\App.baml
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\MainWindow.baml
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.g.resources
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus_koehres_Project.Properties.Resources.resources
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.csproj.GenerateResource.cache
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.csproj.CopyComplete
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.exe
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.pdb
