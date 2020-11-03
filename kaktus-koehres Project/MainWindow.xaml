@@ -21,6 +21,11 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
         </Style>
+
+        <Style x:Key="PageButtonStyle" TargetType="Button" BasedOn="{StaticResource BasedWindowButtonsStyle}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
     </Window.Resources>
     
     <Border CornerRadius="2.5" Background="White" BorderBrush="Gray" BorderThickness="1.3">
@@ -119,12 +124,94 @@
 
                 <!-- 5 -->
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <TextBlock>5</TextBlock>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="Black">
+                        <Grid>
+                            <ListBox x:Name="DetailListBox" MouseDoubleClick="DetailListBox_MouseDoubleClick"/>
+                        </Grid>
+                    </Border>
+
+                    <Grid Grid.Row="1">
+                        <Button x:Name="PagePrevButton" Margin="0,0,50,0"
+                                Click="PagePrevButton_Click"
+                                Style="{StaticResource PageButtonStyle}"
+                                ToolTip="MaterialDesignIconForegroundButton">
+                            <materialDesign:PackIcon Kind="ChevronLeft" />
+                        </Button>
+
+                        <Label x:Name="PageLabel" VerticalAlignment="Center" HorizontalAlignment="Center" Content="{Binding Page}" />
+
+                        <Button x:Name="PageNextButton" Margin="50,0,0,0"
+                                Click="PageNextButton_Click"
+                                Style="{StaticResource PageButtonStyle}"
+                                ToolTip="MaterialDesignIconForegroundButton">
+                            <materialDesign:PackIcon Kind="ChevronRight" />
+                        </Button>
+
+                        <Label x:Name="MaxPageLabel" Margin="0,0,3,0" VerticalAlignment="Center" HorizontalAlignment="Right" Content="{Binding MaxPage}" />
+                    </Grid>
                 </Grid>
 
                 <!-- 6 -->
                 <Grid Grid.Row="1" Grid.Column="2">
-                    <TextBlock>6</TextBlock>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock>6</TextBlock>
+                    </Grid>
+                    
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Row="0" Grid.ColumnSpan="2" BorderThickness="0,1,0,0" BorderBrush="black" />
+                        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0,1,0,0" BorderBrush="black" />
+                        <Border Grid.Row="2" Grid.ColumnSpan="2" BorderThickness="0,1,0,0" BorderBrush="black" />
+                        <Border Grid.Row="3" Grid.ColumnSpan="2" BorderThickness="0,1,0,0" BorderBrush="black" />
+
+                        <Viewbox Grid.Row="0" Grid.Column="0">
+                            <TextBlock>Portion</TextBlock>
+                        </Viewbox>
+                        <Viewbox Grid.Row="1" Grid.Column="0">
+                            <TextBlock>100 Seeds</TextBlock>
+                        </Viewbox>
+                        <Viewbox Grid.Row="2" Grid.Column="0">
+                            <TextBlock>1000 Seeds</TextBlock>
+                        </Viewbox>
+                        <Viewbox Grid.Row="3" Grid.Column="0">
+                            <TextBlock>10000 Seeds</TextBlock>
+                        </Viewbox>
+
+                        <Viewbox Grid.Row="0" Grid.Column="1">
+                            <TextBlock x:Name="priceText1" Text="{Binding Price[0]}"/>
+                        </Viewbox>
+                        <Viewbox Grid.Row="1" Grid.Column="2">
+                            <TextBlock x:Name="priceText2" Text="{Binding Price[1]}"/>
+                        </Viewbox>
+                        <Viewbox Grid.Row="2" Grid.Column="3">
+                            <TextBlock x:Name="priceText3" Text="{Binding Price[2]}"/>
+                        </Viewbox>
+                        <Viewbox Grid.Row="3" Grid.Column="4">
+                            <TextBlock x:Name="priceText4" Text="{Binding Price[3]}"/>
+                        </Viewbox>
+
+
+
+                    </Grid>
                 </Grid>
 
                 <!-- 7 -->

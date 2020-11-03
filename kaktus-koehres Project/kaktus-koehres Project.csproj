@@ -69,8 +69,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="VIewModels\DetailListBoxViewModel.cs" />
     <Compile Include="VIewModels\INotifyPropertyChanged.cs" />
     <Compile Include="VIewModels\ListBoxViewModel.cs" />
+    <Compile Include="VIewModels\PageLabelViewModel.cs" />
+    <Compile Include="VIewModels\PriceViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

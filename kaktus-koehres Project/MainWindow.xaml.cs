@@ -8,6 +8,8 @@ using System.Text;
 using Microsoft.VisualBasic;
 using System.ComponentModel;
 using System.Windows.Threading;
+using System.Security.Policy;
+using System.Collections.Generic;
 
 namespace kaktus_koehres_Project
 {
@@ -16,6 +18,7 @@ namespace kaktus_koehres_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        private dynamic cactus_info;
         private string cookie_value = "";
         private BackgroundWorker thread = new BackgroundWorker();
         private WinHttpRequest winhttp = new WinHttpRequest();
@@ -28,10 +31,22 @@ namespace kaktus_koehres_Project
             thread.RunWorkerAsync();
         }
 
-        private void init()
+        private void InitBinding()
         {
             CactusListBox.ItemsSource = CactusViewModel.GetInstance();
+            DetailListBox.ItemsSource = DetailListBoxViewModel.GetInstance();
+            PageLabel.DataContext = PageLabelViewModel.GetInstacne();
+            MaxPageLabel.DataContext = PageLabelViewModel.GetInstacne();
 
+            priceText1.DataContext = PriceViewModel.GetInstance();
+            priceText2.DataContext = PriceViewModel.GetInstance();
+            priceText3.DataContext = PriceViewModel.GetInstance();
+            priceText4.DataContext = PriceViewModel.GetInstance();
+        }
+
+        private void init()
+        {
+            InitBinding();
             thread.DoWork += (s, _) =>
             {
                 winhttp.Open("GET", "https://www.kaktus-koehres.de/shop/Cactus-seeds---1.html", true);
@@ -177,14 +192,103 @@ namespace kaktus_koehres_Project
 
         #endregion
 
+        private int GetCactusDetailView(string url)
+        {
+            try
+            {
+                DetailModel.GetInstance().Clear();
+                winhttp.Open("GET", url, false);
+                //winhttp.SetRequestHeader("accept-language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7");
+                //winhttp.SetRequestHeader("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+                //winhttp.SetRequestHeader("referer", url);
+                winhttp.Send();
+                winhttp.WaitForResponse();
+                string result = Strings.Split(Encoding.Default.GetString(winhttp.ResponseBody), "(of in total <b>")[1];
+                int list_count = Convert.ToInt32(Strings.Split(result, "</b>")[0]);
+                int page_count = (list_count - 1) / 10 + 1;
+
+
+                string[] list = Strings.Split(result, "#993333;\">");
+                for (int i = 1; i < list.Length; i++)
+                {
+                    string[] price = Strings.Split(list[i], "<tr><td> ");
+                    List<double> temp = new List<double>();
+                    for(int j = 1; j < price.Length; j++)
+                    {
+                        temp.Add(Convert.ToDouble(Strings.Split(price[j]," EUR")[0].ToString().Replace(',','.')));
+                    }
+                    DetailModel.GetInstance().Add(new DetailForm() { Cactus_Name = Strings.Split(list[i], " </strong><em>")[0], Price=temp });
+                }
+
+                DetailListBoxViewModel.SetSource(DetailModel.GetDataSource());
+                DetailListBox.Items.Refresh();
+                return page_count;
+            }
+            catch
+            {
+                GetCactusDetailView(url);
+                return 0;
+            }
+        }
 
         private void CactusListBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             dynamic meta_data = sender as dynamic;
-            var cactus_info = CactusModel.GetInstance()[meta_data.SelectedIndex];
-            string url = "https://www.kaktus-koehres.de/shop/Cactus-seeds/" + cactus_info.Cactus_Name + "---" + cactus_info.Page_Code + ".html?" + cookie_value;
-            System.Windows.Clipboard.Clear();
-            System.Windows.Clipboard.SetText(url);
+            cactus_info = CactusModel.GetInstance()[meta_data.SelectedIndex];
+            string url = "https://www.kaktus-koehres.de/shop/Cactus-seeds/" + cactus_info.Cactus_Name + "---" + cactus_info.Page_Code + "-1.html?" + cookie_value;
+            
+            PageLabelViewModel.GetInstacne().MaxPage = GetCactusDetailView(url);
+            PageLabelViewModel.GetInstacne().Page = 1;
+
         }
+
+        private void PagePrevButton_Click(object sender, RoutedEventArgs e)
+        {
+            int temp = PageLabelViewModel.GetInstacne().Page;
+            PageLabelViewModel.GetInstacne().Page--;
+            if (cactus_info != null && PageLabelViewModel.GetInstacne().Page != temp)
+            {
+                string url = "https://www.kaktus-koehres.de/shop/Cactus-seeds/" + cactus_info.Cactus_Name + "---" + cactus_info.Page_Code + "-" + PageLabelViewModel.GetInstacne().Page + ".html?" + cookie_value;
+                GetCactusDetailView(url);
+            }
+        }
+
+        private void PageNextButton_Click(object sender, RoutedEventArgs e)
+        {
+            int temp = PageLabelViewModel.GetInstacne().Page;
+            PageLabelViewModel.GetInstacne().Page++;
+            if (cactus_info != null && PageLabelViewModel.GetInstacne().Page != temp)
+            {
+                string url = "https://www.kaktus-koehres.de/shop/Cactus-seeds/" + cactus_info.Cactus_Name + "---" + cactus_info.Page_Code + "-" + PageLabelViewModel.GetInstacne().Page + ".html?" + cookie_value;
+                GetCactusDetailView(url);
+            }
+        }
+
+        private void DetailListBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            WinHttpRequest http = new WinHttpRequest();
+            /*
+             * https://www.google.com/search?q=LOBIVIA+acchaensis&hl=ko&tbm=isch
+             * 
+             * 
+             */
+            dynamic meta_data = sender as dynamic;
+            var temp = DetailModel.GetInstance()[meta_data.SelectedIndex];
+            double[] d = new double[] { 0, 0, 0, 0 };
+            int idx = 0;
+            foreach(var item in temp.Price)
+            {
+                d[idx] = item;
+                idx++;
+            }
+            PriceViewModel.GetInstance().Price = d;
+            http.Open("GET", "https://www.google.com/search?q=" + temp.Cactus_Name + "&hl=ko&tbm=isch");
+            http.Send();
+            http.WaitForResponse();
+
+            System.Windows.Clipboard.Clear();
+            System.Windows.Clipboard.SetText(Encoding.Default.GetString(winhttp.ResponseBody));
+        }
+
     }
 }
