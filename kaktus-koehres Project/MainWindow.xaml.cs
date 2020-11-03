@@ -16,6 +16,7 @@ namespace kaktus_koehres_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string cookie_value = "";
         private BackgroundWorker thread = new BackgroundWorker();
         private WinHttpRequest winhttp = new WinHttpRequest();
         private NotifyIcon notify;
@@ -23,23 +24,34 @@ namespace kaktus_koehres_Project
         public MainWindow()
         {
             InitializeComponent();
-            CactusListBox.ItemsSource = ListBoxViewViewModel.GetInstance();
+            init();
+            thread.RunWorkerAsync();
+        }
+
+        private void init()
+        {
+            CactusListBox.ItemsSource = CactusViewModel.GetInstance();
 
             thread.DoWork += (s, _) =>
             {
-                winhttp.Open("GET", "https://www.kaktus-koehres.de/shop/Cactus-seeds---1.html");
+                winhttp.Open("GET", "https://www.kaktus-koehres.de/shop/Cactus-seeds---1.html", true);
                 winhttp.SetRequestHeader("accept-language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7");
                 winhttp.SetRequestHeader("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
                 winhttp.Send();
                 winhttp.WaitForResponse();
-
+                cookie_value = Strings.Split(winhttp.GetResponseHeader("set-cookie"), "; path=/")[0];
                 string result = Strings.Split(Encoding.Default.GetString(winhttp.ResponseBody), "<u>Cactus seeds</u>")[1];
                 string[] list = Strings.Split(result, "</a></div><div class=");
+
                 for (int i = 0; i < list.Length - 1; i++)
                 {
-                    string cacuts_name = Strings.Split(Strings.Split(list[i], "</a></div><div class=\"")[0], "\">")[3];
-                    ListBoxViewViewModel.GetInstance().Add(cacuts_name);
+                    string cactus_name = Strings.Split(list[i], "\">")[3];
+                    string page_code = Strings.Split(Strings.Split(list[i], ".html?")[0], "---")[1];
+                    CactusModel.GetInstance().Add(new CactusForm() { Cactus_Name = cactus_name, Page_Code = page_code });
                 }
+
+                CactusViewModel.SetSource(CactusModel.GetDataSource());
+
 
                 System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
                 {
@@ -47,21 +59,13 @@ namespace kaktus_koehres_Project
                 }));
             };
 
-
-            //CactusListBox.Items.Refresh();
         }
 
         #region Windows Form Events
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var anim = new DoubleAnimation(0, 1, (Duration)TimeSpan.FromSeconds(1));
-            anim.Completed += (s, _) =>
-             {
-                 thread.RunWorkerAsync();
-             };
             this.BeginAnimation(UIElement.OpacityProperty, anim);
-
-
         }
 
         private void Window_Activated(object sender, EventArgs e)
@@ -173,9 +177,14 @@ namespace kaktus_koehres_Project
 
         #endregion
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
+        private void CactusListBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            dynamic meta_data = sender as dynamic;
+            var cactus_info = CactusModel.GetInstance()[meta_data.SelectedIndex];
+            string url = "https://www.kaktus-koehres.de/shop/Cactus-seeds/" + cactus_info.Cactus_Name + "---" + cactus_info.Page_Code + ".html?" + cookie_value;
+            System.Windows.Clipboard.Clear();
+            System.Windows.Clipboard.SetText(url);
         }
     }
 }

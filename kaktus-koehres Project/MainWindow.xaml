@@ -12,6 +12,7 @@
         Loaded="Window_Loaded" Closing="Window_Closing"
         Activated="Window_Activated"
         MinWidth="1000" MinHeight="550"
+        Topmost="True"
         Title="MainWindow" Height="550" Width="1000">
     
     <Window.Resources>
@@ -31,13 +32,14 @@
             <!-- Windows TitleBar Style -->
             <Border Grid.Column="1" BorderThickness="0,0,0,1" BorderBrush="Black">
                 <Grid Grid.Row="0">
+                    
                     <ContentControl MouseDoubleClick="WindowsMaximizeButton_Click">
                         <Rectangle Name="titlebar" Fill="Transparent" Width="auto" Height="auto"  ClipToBounds="True"
                                            MouseLeftButtonDown="WindowsTitleBar_MouseLeftButtonDown"/>
                     </ContentControl>
 
 
-                    <ToggleButton x:Name="ToggleButton1" Click="ToggleButton1_Click"
+                    <ToggleButton x:Name="ToggleButton1" Click="ToggleButton1_Click" IsChecked="True"
                                               HorizontalAlignment="Right" Margin="0,0,70,0"
                                               Background="Black" ToolTip="TopMost Setting"
                                               Width="40" Height="20">
@@ -76,15 +78,78 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <ListBox x:Name="CactusListBox" ItemsSource="{Binding Cactus_Name}"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+
+                <!-- Border Style -->
+                <Border Grid.Column="1" Grid.RowSpan="3" BorderBrush="Black" BorderThickness="1,0,1,0"/>
+                <Border Grid.Row="1" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="0,1,0,1"/>
+
+
+                <!-- 1 -->
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Viewbox>
+                        <TextBlock Margin="2">카테고리</TextBlock>
+                    </Viewbox>
                 </Grid>
-                <Border Grid.Column="1" BorderThickness="1,0,1,0" BorderBrush="Black">
-                    <Grid>
-                        
-                    </Grid>
-                </Border>
+
+                <!-- 2 -->
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Viewbox>
+                        <TextBlock Margin="2">상세 정보</TextBlock>
+                    </Viewbox>
+                </Grid>
                 
+                <!-- 3 -->
+                <Grid Grid.Row="0" Grid.Column="2">
+                    <Viewbox>
+                        <TextBlock Margin="2">이미지</TextBlock>
+                    </Viewbox>
+                </Grid>
+
+                <!-- 4 -->
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid Grid.Column="1" Grid.Row="0">
+                        <ListBox x:Name="CactusListBox" MouseDoubleClick="CactusListBox_MouseDoubleClick"/>
+                    </Grid>
+                </Grid>
+
+                <!-- 5 -->
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <TextBlock>5</TextBlock>
+                </Grid>
+
+                <!-- 6 -->
+                <Grid Grid.Row="1" Grid.Column="2">
+                    <TextBlock>6</TextBlock>
+                </Grid>
+
+                <!-- 7 -->
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <TextBox
+                        materialDesign:HintAssist.Hint="카테고리 검색"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Stretch">
+                    </TextBox>
+                </Grid>
+
+                <!-- 8 -->
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <TextBox
+                        materialDesign:HintAssist.Hint="상세정보 검색"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Stretch">
+                    </TextBox>
+                </Grid>
+
+                <!-- 9 -->
+                <Grid Grid.Row="2" Grid.Column="2">
+                    <TextBlock>9</TextBlock>
+                </Grid>
+
             </Grid>
         </Grid>
     </Border>
