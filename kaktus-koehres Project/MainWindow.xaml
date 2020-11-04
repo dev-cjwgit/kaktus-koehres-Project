@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:kaktus_koehres_Project"
+        xmlns:gu="https://github.com/JohanLarsson/Gu.Wpf.FlipView"
         mc:Ignorable="d"
         WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" ShowInTaskbar="False"
@@ -85,8 +86,8 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"/>
+                    <RowDefinition Height="4*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="45"/>
                 </Grid.RowDefinitions>
 
                 <!-- Border Style -->
@@ -160,18 +161,24 @@
                 <Grid Grid.Row="1" Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="120"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <TextBlock>6</TextBlock>
+                        <gu:FlipView x:Name="ImagesFlipView" SelectedIndex="1" ShowArrows="False" ItemsSource="{Binding Url}" SelectionChanged="ImagesFlipView_SelectionChanged">
+                            <gu:FlipView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image x:Name="Test" Source="{Binding ElementName=Test, Path=DataContext}"/>
+                                </DataTemplate>
+                            </gu:FlipView.ItemTemplate>
+                        </gu:FlipView>
                     </Grid>
                     
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -234,7 +241,9 @@
 
                 <!-- 9 -->
                 <Grid Grid.Row="2" Grid.Column="2">
-                    <TextBlock>9</TextBlock>
+                    <Viewbox>
+                        <TextBlock Margin="10" x:Name="CacutsTitle" Text="{Binding Title}"/>
+                    </Viewbox>
                 </Grid>
 
             </Grid>

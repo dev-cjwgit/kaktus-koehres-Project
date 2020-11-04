@@ -1,0 +1,885 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gu.Wpf.FlipView</name>
+    </assembly>
+    <members>
+        <member name="T:Gu.Wpf.FlipView.ArrowPlacement">
+            <summary>
+            For indicating how navigation arrows should be placed.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.ArrowPlacement.Inside">
+            <summary>
+            Inside the image.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.ArrowPlacement.Outside">
+            <summary>
+            Outside the image.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.AttachedProperties.Transform">
+            <summary>
+            Attached properties for animating position during transitions.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.AttachedProperties.Transform.RelativeOffsetXProperty">
+            <summary>
+            Gets or sets the offset relative to the size of the element in the x direction.
+            0 means <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetXProperty"/> is zero.
+            1 means <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetXProperty"/> is ActualWidth
+            -1 means <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetXProperty"/> is -ActualWidth.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetXProperty">
+            <summary>
+            The absolute offset in the x direction.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.AttachedProperties.Transform.ScaleXProperty">
+            <summary>
+            The scale in the x direction.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.AttachedProperties.Transform.RelativeOffsetYProperty">
+            <summary>
+            Gets or sets the offset relative to the size of the element in the x direction.
+            0 means <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetYProperty"/> is zero.
+            1 means <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetYProperty"/> is ActualWidth
+            -1 means <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetYProperty"/> is -ActualWidth.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetYProperty">
+            <summary>
+            The absolute offset in the y direction.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.AttachedProperties.Transform.ScaleYProperty">
+            <summary>
+            The scale in the y direction.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.GetRelativeOffsetX(System.Windows.FrameworkElement)">
+            <summary>Helper for getting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.RelativeOffsetXProperty"/> from <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.FrameworkElement"/> to read <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.RelativeOffsetXProperty"/> from.</param>
+            <returns>RelativeOffsetX property value.</returns>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.SetRelativeOffsetX(System.Windows.FrameworkElement,System.Double)">
+            <summary>Helper for setting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.RelativeOffsetXProperty"/> on <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.FrameworkElement"/> to set <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.RelativeOffsetXProperty"/> on.</param>
+            <param name="value">RelativeOffsetX property value.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.GetOffsetX(System.Windows.DependencyObject)">
+            <summary>Helper for getting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetXProperty"/> from <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.DependencyObject"/> to read <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetXProperty"/> from.</param>
+            <returns>OffsetX property value.</returns>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.SetOffsetX(System.Windows.DependencyObject,System.Double)">
+            <summary>Helper for setting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetXProperty"/> on <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.DependencyObject"/> to set <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetXProperty"/> on.</param>
+            <param name="value">OffsetX property value.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.GetScaleX(System.Windows.DependencyObject)">
+            <summary>Helper for getting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.ScaleXProperty"/> from <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.DependencyObject"/> to read <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.ScaleXProperty"/> from.</param>
+            <returns>ScaleX property value.</returns>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.SetScaleX(System.Windows.DependencyObject,System.Double)">
+            <summary>Helper for setting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.ScaleXProperty"/> on <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.DependencyObject"/> to set <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.ScaleXProperty"/> on.</param>
+            <param name="value">ScaleX property value.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.GetRelativeOffsetY(System.Windows.DependencyObject)">
+            <summary>Helper for getting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.RelativeOffsetYProperty"/> from <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.DependencyObject"/> to read <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.RelativeOffsetYProperty"/> from.</param>
+            <returns>RelativeOffsetY property value.</returns>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.SetRelativeOffsetY(System.Windows.DependencyObject,System.Double)">
+            <summary>Helper for setting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.RelativeOffsetYProperty"/> on <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.DependencyObject"/> to set <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.RelativeOffsetYProperty"/> on.</param>
+            <param name="value">RelativeOffsetY property value.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.GetOffsetY(System.Windows.DependencyObject)">
+            <summary>Helper for getting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetYProperty"/> from <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.DependencyObject"/> to read <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetYProperty"/> from.</param>
+            <returns>OffsetY property value.</returns>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.SetOffsetY(System.Windows.DependencyObject,System.Double)">
+            <summary>Helper for setting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetYProperty"/> on <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.DependencyObject"/> to set <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.OffsetYProperty"/> on.</param>
+            <param name="value">OffsetY property value.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.GetScaleY(System.Windows.DependencyObject)">
+            <summary>Helper for getting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.ScaleYProperty"/> from <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.DependencyObject"/> to read <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.ScaleYProperty"/> from.</param>
+            <returns>ScaleY property value.</returns>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.AttachedProperties.Transform.SetScaleY(System.Windows.DependencyObject,System.Double)">
+            <summary>Helper for setting <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.ScaleYProperty"/> on <paramref name="element"/>.</summary>
+            <param name="element"><see cref="T:System.Windows.DependencyObject"/> to set <see cref="F:Gu.Wpf.FlipView.AttachedProperties.Transform.ScaleYProperty"/> on.</param>
+            <param name="value">ScaleY property value.</param>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.FlipView">
+            <summary>
+            A <see cref="T:System.Windows.Controls.Primitives.Selector"/> for navigating the content.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.IncreaseInAnimationProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.IncreaseInAnimation"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.IncreaseOutAnimationProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.IncreaseOutAnimation"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.DecreaseInAnimationProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.DecreaseInAnimation"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.DecreaseOutAnimationProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.DecreaseOutAnimation"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.CurrentInAnimationProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.CurrentInAnimation"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.CurrentOutAnimationProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.CurrentOutAnimation"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.ShowIndexProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.ShowIndex"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.IndexPlacementProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.IndexPlacement"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.IndexItemStyleProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.IndexItemStyle"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.ShowArrowsProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.ShowArrows"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.ArrowPlacementProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.ArrowPlacement"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.FlipView.ArrowButtonStyleProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.FlipView.ArrowButtonStyle"/> dependency property.</summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.IncreaseInAnimation">
+            <summary>
+            Gets or sets how new content animates in when selected index increases.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.IncreaseOutAnimation">
+            <summary>
+            Gets or sets how new content animates out when selected index increases.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.DecreaseInAnimation">
+            <summary>
+            Gets or sets how new content animates in when selected index decreases.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.DecreaseOutAnimation">
+            <summary>
+            Gets or sets how new content animates in when selected index decreases.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.CurrentInAnimation">
+            <summary>
+            Gets or sets how new content animates in.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.CurrentOutAnimation">
+            <summary>
+            Gets or sets how new content animates out.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.ShowIndex">
+            <summary>
+            Gets or sets a value indicating whether the index should be visible.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.IndexPlacement">
+            <summary>
+            Gets or sets a value specifying where the index should be rendered.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.IndexItemStyle">
+            <summary>
+            Gets or sets a style for the index items looks TargetType="ListBoxItem".
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.ShowArrows">
+            <summary>
+            Gets or sets a value indicating whether the navigation buttons should be visible.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.ArrowPlacement">
+            <summary>
+            Gets or sets a value specifying where the navigation buttons should be rendered.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.FlipView.ArrowButtonStyle">
+            <summary>
+            Gets or sets a style for the navigation buttons TargetType="RepeatButton".
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.FlipView.PreviewSelectedIndexChanged(System.Int32,System.Int32)">
+            <summary>
+            Called before3 selected index changes.
+            </summary>
+            <param name="previousIndex">The old index.</param>
+            <param name="newIndex">The new index.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.FlipView.OnItemsChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.FlipView.OnCreateAutomationPeer">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.FlipView.FlipViewAutomationPeer">
+            <summary>
+            An <see cref="T:System.Windows.Automation.Peers.AutomationPeer"/> for <see cref="T:Gu.Wpf.FlipView.FlipView"/>.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.FlipViewAutomationPeer.#ctor(Gu.Wpf.FlipView.FlipView)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.FlipViewAutomationPeer"/> class.
+            </summary>
+            <param name="owner">The <see cref="T:Gu.Wpf.FlipView.FlipView" /> that is associated with this <see cref="T:Gu.Wpf.FlipView.FlipViewAutomationPeer" />.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.FlipViewAutomationPeer.CreateItemAutomationPeer(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.FlipViewAutomationPeer.GetChildrenCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.FlipViewAutomationPeer.GetClassNameCore">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.FlipView.GesturePanel">
+            <summary>
+            A panel that interprets user input like mouse and touch and detects gestures.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.GesturePanel.GesturedEvent">
+            <summary>Identifies the <see cref="E:Gu.Wpf.FlipView.GesturePanel.Gestured"/> routed event.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.GesturePanel.GestureTrackerProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.GesturePanel.GestureTracker"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.GesturePanel.BackgroundProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.GesturePanel.Background"/> dependency property.</summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.GesturePanel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.GesturePanel"/> class.
+            </summary>
+        </member>
+        <member name="E:Gu.Wpf.FlipView.GesturePanel.Gestured">
+            <summary>
+            Notifies when a gesture was detected.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.GesturePanel.GestureTracker">
+            <summary>
+            Gets or sets the <see cref="T:Gu.Wpf.FlipView.Gestures.IGestureTracker"/> that interprets touch input.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.GesturePanel.Background">
+            <summary>
+            Gets or sets the the brush used to fill the area within the panel.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.GesturePanel.OnRender(System.Windows.Media.DrawingContext)">
+            <summary>
+            In addition to the child, Border renders a background + border.  The background is drawn inside the border.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.GesturePanel.OnGestureTrackerChanged(Gu.Wpf.FlipView.Gestures.IGestureTracker,Gu.Wpf.FlipView.Gestures.IGestureTracker)">
+            <summary>This method is invoked when the <see cref="F:Gu.Wpf.FlipView.GesturePanel.GestureTrackerProperty"/> changes.</summary>
+            <param name="oldTracker">The old value of <see cref="F:Gu.Wpf.FlipView.GesturePanel.GestureTrackerProperty"/>.</param>
+            <param name="newTracker">The new value of <see cref="F:Gu.Wpf.FlipView.GesturePanel.GestureTrackerProperty"/>.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.GesturePanel.OnGesture(System.Object,Gu.Wpf.FlipView.Gestures.GestureEventArgs)">
+            <summary>
+            Called by the <see cref="P:Gu.Wpf.FlipView.GesturePanel.GestureTracker"/> when it detects a gesture.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.DefaultGestureInterpreter">
+            <summary>
+            The default interpreter of gestures.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.DefaultGestureInterpreter.Mouse">
+            <summary>
+            Gets a new instance with default settings for mouse swipes.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.DefaultGestureInterpreter.Touch">
+            <summary>
+            Gets a new instance with default settings for touch swipes.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.DefaultGestureInterpreter.MinSwipeVelocity">
+            <summary>
+            Gets or sets the minimum velocity for a gesture to be considered a swipe.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.DefaultGestureInterpreter.MinSwipeLength">
+            <summary>
+            Gets or sets the minimum length for a gesture to be considered a swipe.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.DefaultGestureInterpreter.MaxDeviationFromHorizontal">
+            <summary>
+            Gets or sets the maximum angle from horizontal for a swipe to be a swipe left or right.
+            In degrees.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.DefaultGestureInterpreter.TryGetGesture(System.Collections.Generic.IReadOnlyList{Gu.Wpf.FlipView.Gestures.GesturePoint},Gu.Wpf.FlipView.Gestures.GestureEventArgs@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.DefaultGestureInterpreter.TryGetGesture(System.Windows.Input.ExecutedRoutedEventArgs,Gu.Wpf.FlipView.Gestures.GestureEventArgs@)">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.CommandGestureEventArgs">
+            <summary>
+            A gesture triggered by a command.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.CommandGestureEventArgs.#ctor(Gu.Wpf.FlipView.Gestures.GestureType,System.Windows.Input.ExecutedRoutedEventArgs)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.CommandGestureEventArgs"/> class.
+            </summary>
+            <param name="type">The interpreted gesture.</param>
+            <param name="commandArgs">The command event args that triggered the gesture.</param>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.CommandGestureEventArgs.CommandArgs">
+            <summary>
+            Gets the command event args that triggered the gesture.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.CommandGestureEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.GesturedEventArgs">
+            <summary>
+            A gesture triggered by user input.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.GesturedEventArgs.#ctor(Gu.Wpf.FlipView.Gestures.GestureType,Gu.Wpf.FlipView.Gestures.GestureEventArgs)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.GesturedEventArgs"/> class.
+            </summary>
+            <param name="gesture">The type of gesture detected.</param>
+            <param name="gestureEventArgs">The gesture event args with more info.</param>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.GesturedEventArgs.Gesture">
+            <summary>
+            Gets the type of gesture that was detected.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.GesturedEventArgs.GestureEventArgs">
+            <summary>
+            Gets the gesture event args with more info.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.GesturedEventHandler">
+            <summary>
+            Handler for the gesture event.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.GestureEventArgs">
+            <summary>
+            A gesture triggered by user input.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.GestureEventArgs.#ctor(Gu.Wpf.FlipView.Gestures.GestureType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.GestureEventArgs"/> class.
+            </summary>
+            <param name="type">The interpreted gesture.</param>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.GestureEventArgs.Type">
+            <summary>
+            Gets the type of interpreted gesture.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.InputGestureEventArgs">
+            <summary>
+            A gesture detected from mouse or touch input.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.InputGestureEventArgs.#ctor(Gu.Wpf.FlipView.Gestures.GestureType,System.Double,System.Windows.Vector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.InputGestureEventArgs"/> class.
+            </summary>
+            <param name="type">The interpreted gesture.</param>
+            <param name="velocity">The speed of the gesture.</param>
+            <param name="delta">The size of the gesture.</param>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.InputGestureEventArgs.Velocity">
+            <summary>
+            Gets the speed of the gesture.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.InputGestureEventArgs.Delta">
+            <summary>
+            Gets the size of the gesture.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.InputGestureEventArgs.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.GesturePoint">
+            <summary>
+            A point in a gesture, can be a timestamped position in a mouse move.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.Gestures.GesturePoint.Point">
+            <summary>
+            The position.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.Gestures.GesturePoint.Time">
+            <summary>
+            The time when the input occurred.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.GesturePoint.#ctor(System.Windows.Point,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.GesturePoint"/> struct.
+            </summary>
+            <param name="point">The position.</param>
+            <param name="time">The time when the input occurred.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.GesturePoint.Equals(Gu.Wpf.FlipView.Gestures.GesturePoint)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.GesturePoint.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.GesturePoint.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.GestureType">
+            <summary>
+            The type of gesture that was detected.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.Gestures.GestureType.Unknown">
+            <summary>
+            The stream of events did not match a gesture.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.Gestures.GestureType.SwipeLeft">
+            <summary>
+            The stream of events was a swipe to the left.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.Gestures.GestureType.SwipeRight">
+            <summary>
+            The stream of events was a swipe to the right.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.IGestureInterpreter">
+            <summary>
+            An interpreter for the user input detected by <see cref="T:Gu.Wpf.FlipView.Gestures.IGestureTracker"/>.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.IGestureInterpreter.TryGetGesture(System.Collections.Generic.IReadOnlyList{Gu.Wpf.FlipView.Gestures.GesturePoint},Gu.Wpf.FlipView.Gestures.GestureEventArgs@)">
+            <summary>
+            Check if <paramref name="points"/> is a gesture.
+            </summary>
+            <param name="points">The points registered by the tracker.</param>
+            <param name="gestureEventArgs">The event args with the detected gesture if any.</param>
+            <returns>True if <paramref name="points"/> is interpreted as a gesture.</returns>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.IGestureInterpreter.TryGetGesture(System.Windows.Input.ExecutedRoutedEventArgs,Gu.Wpf.FlipView.Gestures.GestureEventArgs@)">
+            <summary>
+            Check if <paramref name="executed"/> can be interpreted as a gesture.
+            Some hardware turns swipes into navigation commands.
+            </summary>
+            <param name="executed">The event args for the command that executed.</param>
+            <param name="gestureEventArgs">The event args with the detected gesture if any.</param>
+            <returns>True if <paramref name="executed"/> is interpreted as a gesture.</returns>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1">
+            <summary>
+            A base class for <see cref="T:Gu.Wpf.FlipView.Gestures.IGestureTracker"/>.
+            </summary>
+            <typeparam name="TArgs">The type of the event args.</typeparam>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.#ctor(Gu.Wpf.FlipView.Gestures.IGestureInterpreter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1"/> class.
+            </summary>
+            <param name="interpreter">The interpreter to use. If null <see cref="T:Gu.Wpf.FlipView.Gestures.DefaultGestureInterpreter"/> is used.</param>
+        </member>
+        <member name="E:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.Gestured">
+            <inheritdoc />
+        </member>
+        <member name="E:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.PropertyChanged">
+            <inheritdoc />
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.IsGesturing">
+            <summary>
+            Gets or sets a value indicating whether gets a value indicating if a potential gesture is started.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.Interpreter">
+            <summary>
+            Gets or sets the <see cref="T:Gu.Wpf.FlipView.Gestures.IGestureInterpreter"/> that evaluates the detected events.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.InputElement">
+            <summary>
+            Gets or sets the input element being tracked. Setting it to null removes subscriptions.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.OnGestured(Gu.Wpf.FlipView.Gestures.GestureEventArgs)">
+            <summary>
+            Raise the gesture event to notify subscribers that a gesture was detected.
+            </summary>
+            <param name="gestureEventArgs">The detected gesture.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.OnExecuted(System.Windows.Input.ExecutedRoutedEventArgs)">
+            <summary>
+            Notify a gesture for <paramref name="eventArgs"/>.
+            </summary>
+            <param name="eventArgs">The event args for the command.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.OnStart(System.Object,`0)">
+            <summary>
+            Called at the start of a possible gesture.
+            </summary>
+            <param name="sender">The sender of the event.</param>
+            <param name="e">The event argument.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.OnMove(System.Object,`0)">
+            <summary>
+            Called when position changed during a possible gesture.
+            </summary>
+            <param name="sender">The sender of the event.</param>
+            <param name="e">The event argument.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.OnEnd(System.Object,`0)">
+            <summary>
+            Called at the end of a possible gesture.
+            </summary>
+            <param name="sender">The sender of the event.</param>
+            <param name="e">The event argument.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.TryGetPoint(`0,Gu.Wpf.FlipView.Gestures.GesturePoint@)">
+            <summary>
+            Try creating a <see cref="T:Gu.Wpf.FlipView.Gestures.GesturePoint"/> from <paramref name="args"/>.
+            </summary>
+            <param name="args">The event argument.</param>
+            <param name="point">The created point.</param>
+            <returns>True if a point could be created.</returns>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.OnInputElementChanged(System.Windows.UIElement,System.Windows.UIElement)">
+            <summary>This method is invoked when the <see cref="P:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.InputElement"/> changes.</summary>
+            <param name="oldElement">The old value of <see cref="P:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.InputElement"/>.</param>
+            <param name="newElement">The new value of <see cref="P:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.InputElement"/>.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.OnPropertyChanged(System.String)">
+            <summary>Raises the <see cref="E:Gu.Wpf.FlipView.Gestures.AbstractGestureTracker`1.PropertyChanged"/> event.</summary>
+            <param name="propertyName">The name of the property to notify for. String.Empty or null signals to WPF that all properties have changed.</param>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker">
+            <summary>
+            A tracker that tracks both mouse and touch.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.MouseAndTouchResourceKey">
+            <summary>
+            The key for the default resource.
+            </summary>
+        </member>
+        <member name="E:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.Gestured">
+            <inheritdoc />
+        </member>
+        <member name="E:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.PropertyChanged">
+            <inheritdoc />
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.DefaultMouseAndTouch">
+            <summary>
+            Gets returns a new instance of <see cref="T:Gu.Wpf.FlipView.Gestures.MouseGestureTracker"/> with default settings.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.InputElement">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.OnGestured(Gu.Wpf.FlipView.Gestures.GestureEventArgs)">
+            <summary>
+            Notify that a gesture was detected to any subscribers.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.ClearItems">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.InsertItem(System.Int32,Gu.Wpf.FlipView.Gestures.IGestureTracker)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.RemoveItem(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.SetItem(System.Int32,Gu.Wpf.FlipView.Gestures.IGestureTracker)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.OnPropertyChanged(System.String)">
+            <summary>Raises the <see cref="E:Gu.Wpf.FlipView.Gestures.CompositeGestureTracker.PropertyChanged"/> event.</summary>
+            <param name="propertyName">The name of the property to notify for. String.Empty or null signals to WPF that all properties have changed.</param>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.IGestureTracker">
+            <summary>
+            Listens to events in <see cref="P:Gu.Wpf.FlipView.Gestures.IGestureTracker.InputElement"/> and detects gestures.
+            </summary>
+        </member>
+        <member name="E:Gu.Wpf.FlipView.Gestures.IGestureTracker.Gestured">
+            <summary>
+            Notifies when a gesture is detected.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.IGestureTracker.InputElement">
+            <summary>
+            Gets or sets the element for which events are subscribed to to detect gestures.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.MouseGestureTracker">
+            <summary>
+            A gesture tracker for mouse.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.Gestures.MouseGestureTracker.ResourceKey">
+            <summary>
+            The key for the default resource.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.MouseGestureTracker.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.MouseGestureTracker"/> class.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.MouseGestureTracker.Default">
+            <summary>
+            Gets returns a new instance of <see cref="T:Gu.Wpf.FlipView.Gestures.MouseGestureTracker"/> with default settings.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.MouseGestureTracker.TryGetPoint(System.Windows.Input.MouseEventArgs,Gu.Wpf.FlipView.Gestures.GesturePoint@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.MouseGestureTracker.OnInputElementChanged(System.Windows.UIElement,System.Windows.UIElement)">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.SubscribeInfo">
+            <summary>
+            A class for subscribing and unsubscribing to an event.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.SubscribeInfo.#ctor(System.Action{System.Windows.UIElement},System.Action{System.Windows.UIElement})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.SubscribeInfo"/> class.
+            </summary>
+            <param name="addHandler">e => e.AddHandler(routedEvent, handler).</param>
+            <param name="removeHandler"> e => e.RemoveHandler(routedEvent, handler).</param>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.SubscribeInfo.AddHandler">
+            <summary>
+            Gets an action that adds a handler.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.SubscribeInfo.RemoveHandler">
+            <summary>
+            Gets an action the removes a handler.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.SubscribeInfo.Create(System.Windows.RoutedEvent,System.Delegate)">
+            <summary>
+            Create an <see cref="T:Gu.Wpf.FlipView.Gestures.SubscribeInfo"/>.
+            </summary>
+            <param name="routedEvent">The event.</param>
+            <param name="handler">The event handler.</param>
+            <returns>A new <see cref="T:Gu.Wpf.FlipView.Gestures.SubscribeInfo"/>.</returns>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.SubscribeInfo.Create(System.Windows.Input.RoutedCommand,System.Windows.Input.ExecutedRoutedEventHandler)">
+            <summary>
+            Create an <see cref="T:Gu.Wpf.FlipView.Gestures.SubscribeInfo"/>.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="onExecuted">The executed handler.</param>
+            <returns>A new <see cref="T:Gu.Wpf.FlipView.Gestures.SubscribeInfo"/>.</returns>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.SubscribeInfos">
+            <summary>
+            A collection of <see cref="T:Gu.Wpf.FlipView.Gestures.SubscribeInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.SubscribeInfos.#ctor(Gu.Wpf.FlipView.Gestures.SubscribeInfo[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.SubscribeInfos"/> class.
+            </summary>
+            <param name="infos">Configuration for what events to track.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.SubscribeInfos.#ctor(System.Collections.Generic.IReadOnlyList{Gu.Wpf.FlipView.Gestures.SubscribeInfo})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.SubscribeInfos"/> class.
+            </summary>
+            <param name="infos">Configuration for what events to track.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.SubscribeInfos.AddHandlers(System.Windows.UIElement)">
+            <summary>
+            Add handlers for all events.
+            </summary>
+            <param name="element">The new element, can be null.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.SubscribeInfos.RemoveHandlers(System.Windows.UIElement)">
+            <summary>
+            Remove handlers for all events.
+            </summary>
+            <param name="element">The old element, can be null.</param>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Gestures.TouchGestureTracker">
+            <summary>
+            A gesture tracker for mouse.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.Gestures.TouchGestureTracker.ResourceKey">
+            <summary>
+            The key for the default resource.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.TouchGestureTracker.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.Gestures.TouchGestureTracker"/> class.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.Gestures.TouchGestureTracker.Default">
+            <summary>
+            Gets returns a new instance of <see cref="T:Gu.Wpf.FlipView.Gestures.MouseGestureTracker"/> with default settings.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.TouchGestureTracker.TryGetPoint(System.Windows.Input.TouchEventArgs,Gu.Wpf.FlipView.Gestures.GesturePoint@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Gestures.TouchGestureTracker.OnInputElementChanged(System.Windows.UIElement,System.Windows.UIElement)">
+            <inheritdoc />
+        </member>
+        <member name="T:Gu.Wpf.FlipView.IndexPlacement">
+            <summary>
+            For specifying where the index is placed relative to the image.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.IndexPlacement.Above">
+            <summary>
+            Above the image.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.IndexPlacement.Below">
+            <summary>
+            Below the image.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Internals.DependencyObjExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Windows.DependencyObject"/>.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Internals.DependencyObjExtensions.VisualChildrenRecursive(System.Windows.DependencyObject)">
+            <summary>
+            Get all visual children, depth first.
+            </summary>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.Internals.TimeLineExt">
+            <summary>
+            Extension methods for <see cref="T:System.Windows.Media.Animation.Timeline"/>.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.Internals.TimeLineExt.GetTimeToFinished(System.Windows.Media.Animation.Timeline)">
+            <summary>
+            Get the total time of the animation.
+            </summary>
+            <param name="timeline">The source <see cref="T:System.Windows.Media.Animation.Timeline"/>.</param>
+            <returns>The total time the animation will run after it is started.</returns>
+        </member>
+        <member name="T:Gu.Wpf.FlipView.TransitionControl">
+            <summary>
+            A <see cref="T:System.Windows.Controls.ContentControl"/> that animates transitions when content changes.
+            </summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.TransitionControl.PartOldContent">
+            <summary>The expected name of the old content presenter.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.TransitionControl.PartNewContent">
+            <summary>The expected name of the old content presenter.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.TransitionControl.ContentChangedEvent">
+            <summary>Identifies the <see cref="E:Gu.Wpf.FlipView.TransitionControl.ContentChanged"/> routed event.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.TransitionControl.OldContentStyleProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.TransitionControl.OldContentStyle"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.TransitionControl.OutAnimationProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.TransitionControl.OutAnimation"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.TransitionControl.NewContentStyleProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.TransitionControl.NewContentStyle"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.TransitionControl.InAnimationProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.TransitionControl.InAnimation"/> dependency property.</summary>
+        </member>
+        <member name="F:Gu.Wpf.FlipView.TransitionControl.OldContentProperty">
+            <summary>Identifies the <see cref="P:Gu.Wpf.FlipView.TransitionControl.OldContent"/> dependency property.</summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.TransitionControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gu.Wpf.FlipView.TransitionControl"/> class.
+            </summary>
+        </member>
+        <member name="E:Gu.Wpf.FlipView.TransitionControl.ContentChanged">
+            <summary>
+            Notifies when content changes.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.TransitionControl.OldContent">
+            <summary>
+            Gets the content being removed.
+            This will be set to null when the animation finishes.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.TransitionControl.OldContentStyle">
+            <summary>
+            Gets or sets the style for the old content presenter.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.TransitionControl.OutAnimation">
+            <summary>
+            Gets or sets the storyboard that controls how new content animates into view.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.TransitionControl.NewContentStyle">
+            <summary>
+            Gets or sets the style for the new content presenter.
+            </summary>
+        </member>
+        <member name="P:Gu.Wpf.FlipView.TransitionControl.InAnimation">
+            <summary>
+            Gets or sets the storyboard that controls how old content animates out of view.
+            </summary>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.TransitionControl.OnApplyTemplate">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.TransitionControl.OnContentChanged(System.Object,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Gu.Wpf.FlipView.TransitionControl.OnOutAnimationChanged(System.Windows.Media.Animation.Storyboard)">
+            <summary>This method is invoked when the <see cref="F:Gu.Wpf.FlipView.TransitionControl.OutAnimationProperty"/> changes.</summary>
+            <param name="newAnimation">The new value of <see cref="F:Gu.Wpf.FlipView.TransitionControl.OutAnimationProperty"/>.</param>
+        </member>
+        <member name="M:Gu.Wpf.FlipView.TransitionControl.OnOldContentTransitionCompleted">
+            <summary>
+            Called when the animation finishes for the old content.
+            </summary>
+        </member>
+    </members>
+</doc>

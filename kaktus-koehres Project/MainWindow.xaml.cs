@@ -8,8 +8,10 @@ using System.Text;
 using Microsoft.VisualBasic;
 using System.ComponentModel;
 using System.Windows.Threading;
-using System.Security.Policy;
 using System.Collections.Generic;
+using Google.Apis.Services;
+using static Google.Apis.Customsearch.v1.CseResource;
+using Google.Apis.Customsearch.v1;
 
 namespace kaktus_koehres_Project
 {
@@ -42,6 +44,9 @@ namespace kaktus_koehres_Project
             priceText2.DataContext = PriceViewModel.GetInstance();
             priceText3.DataContext = PriceViewModel.GetInstance();
             priceText4.DataContext = PriceViewModel.GetInstance();
+
+            ImagesFlipView.ItemsSource = ImageFlipViewModel.GetInstance();
+            CacutsTitle.DataContext = CactusTitleViewModel.GetInstance();
         }
 
         private void init()
@@ -266,12 +271,6 @@ namespace kaktus_koehres_Project
 
         private void DetailListBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            WinHttpRequest http = new WinHttpRequest();
-            /*
-             * https://www.google.com/search?q=LOBIVIA+acchaensis&hl=ko&tbm=isch
-             * 
-             * 
-             */
             dynamic meta_data = sender as dynamic;
             var temp = DetailModel.GetInstance()[meta_data.SelectedIndex];
             double[] d = new double[] { 0, 0, 0, 0 };
@@ -282,13 +281,49 @@ namespace kaktus_koehres_Project
                 idx++;
             }
             PriceViewModel.GetInstance().Price = d;
-            http.Open("GET", "https://www.google.com/search?q=" + temp.Cactus_Name + "&hl=ko&tbm=isch");
-            http.Send();
-            http.WaitForResponse();
-
-            System.Windows.Clipboard.Clear();
-            System.Windows.Clipboard.SetText(Encoding.Default.GetString(winhttp.ResponseBody));
+            SearchGoogle(temp.Cactus_Name);
         }
 
+        #region Google Custom Search API
+
+        private void SearchGoogle(string searchInput)
+        {
+            string apiKey = "input onwer google api keys";
+            string cx = "015695191635768647286:alyjydblwfs";
+            var svc = new Google.Apis.Customsearch.v1.CustomsearchService(new BaseClientService.Initializer { ApiKey = apiKey });
+            var listRequest = svc.Cse.List(searchInput);
+            //ListRequest num = 10 - default(Range 1 - 10).
+            listRequest.Cx = cx;
+            listRequest.SearchType = CseResource.ListRequest.SearchTypeEnum.Image;
+            var search = listRequest.Execute();
+            if (search != null && search.Items != null)
+            {
+                ImageFlipModel.GetInstance().Clear();
+                foreach (var result in search.Items)
+                {
+                    if (result.Link != null && result.Link != "")
+                    {
+                        ImageFlipModel.GetInstance().Add(new ImageForm() { url = result.Link, title = result.Title });
+                    }
+                }
+                ImageFlipViewModel.SetSource(ImageFlipModel.GetDataSource(0));
+                ImagesFlipView.Items.Refresh();
+
+            }
+        }
+
+        #endregion
+
+        private void ImagesFlipView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                dynamic meta_data = sender as dynamic;
+                var temp = ImageFlipModel.GetInstance()[meta_data.SelectedIndex];
+                CactusTitleViewModel.GetInstance().Title = temp.title;
+            }
+            catch
+            { }
+        }
     }
 }
