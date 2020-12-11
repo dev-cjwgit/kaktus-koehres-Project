@@ -56,3 +56,4 @@ C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\Go
 C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\Newtonsoft.Json.xml
 C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\Gu.Wpf.FlipView.dll
 C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\bin\Debug\Gu.Wpf.FlipView.xml
+C:\Users\user\Desktop\kaktus-koehres Project\kaktus-koehres Project\obj\Debug\kaktus-koehres Project.csprojAssemblyReference.cache
