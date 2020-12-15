@@ -288,7 +288,7 @@ namespace kaktus_koehres_Project
 
         private void SearchGoogle(string searchInput)
         {
-            string apiKey = "AIzaSyALz7S7OPAAMSfkEsM9Ls6rmsSaSMjDxz0";
+            string apiKey = "your google api keys";
             string cx = "015695191635768647286:alyjydblwfs";
             var svc = new Google.Apis.Customsearch.v1.CustomsearchService(new BaseClientService.Initializer { ApiKey = apiKey });
             var listRequest = svc.Cse.List(searchInput);
